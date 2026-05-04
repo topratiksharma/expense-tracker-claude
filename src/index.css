@@ -1,11 +1,35 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #0C0E14;
+  --surface: #12151E;
+  --surface-raised: #181C28;
+  --surface-hover: #1E2233;
+  --border: #212638;
+  --border-light: #2A3048;
+  --text: #E4E8F4;
+  --text-secondary: #60708A;
+  --text-muted: #363D52;
+  --accent: #E8A020;
+  --accent-dim: rgba(232, 160, 32, 0.12);
+  --income: #2DD4A0;
+  --income-bg: rgba(45, 212, 160, 0.08);
+  --expense: #F47070;
+  --expense-bg: rgba(244, 112, 112, 0.08);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
