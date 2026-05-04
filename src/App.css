@@ -49,6 +49,19 @@ h1 {
   font-weight: bold;
 }
 
+.chart-container {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: #fff;
+}
+
+.chart-empty {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+}
+
 .add-transaction {
   border: 1px solid #ddd;
   padding: 16px;
