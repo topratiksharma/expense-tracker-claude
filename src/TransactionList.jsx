@@ -1,18 +1,7 @@
 import { useState } from 'react'
+import { CATEGORIES, CATEGORY_EMOJI } from './CATEGORIES'
 
-const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
-
-const categoryEmoji = {
-  food: '🍔',
-  housing: '🏠',
-  utilities: '💡',
-  transport: '🚗',
-  entertainment: '🎬',
-  salary: '💼',
-  other: '📦',
-};
-
-function TransactionList({ transactions, onDelete }) {
+function TransactionList({ transactions, onDeleteRequest }) {
   const [filterType, setFilterType] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
 
@@ -25,14 +14,14 @@ function TransactionList({ transactions, onDelete }) {
       <div className="transactions-header">
         <h2>Transactions</h2>
         <div className="filters">
-          <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
+          <select aria-label="Filter by type" value={filterType} onChange={(e) => setFilterType(e.target.value)}>
             <option value="all">All Types</option>
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
-          <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
+          <select aria-label="Filter by category" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
             <option value="all">All Categories</option>
-            {categories.map(cat => (
+            {CATEGORIES.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
@@ -56,7 +45,7 @@ function TransactionList({ transactions, onDelete }) {
               <td className="td-desc">{t.description}</td>
               <td>
                 <span className="category-badge">
-                  {categoryEmoji[t.category] ?? '📦'} {t.category}
+                  {CATEGORY_EMOJI[t.category] ?? '📦'} {t.category}
                 </span>
               </td>
               <td className={`td-amount ${t.type === "income" ? "income-amount" : "expense-amount"}`}>
@@ -65,7 +54,8 @@ function TransactionList({ transactions, onDelete }) {
               <td>
                 <button
                   className="delete-btn"
-                  onClick={() => { if (window.confirm(`Delete "${t.description}"?`)) onDelete(t.id); }}
+                  aria-label={`Delete ${t.description}`}
+                  onClick={() => onDeleteRequest({ id: t.id, description: t.description })}
                 >
                   Delete
                 </button>
