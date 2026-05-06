@@ -24,7 +24,7 @@ function TransactionForm({ onAdd }) {
 
     setErrors({});
     onAdd({
-      id: crypto.randomUUID(),
+      id: Date.now(),
       description: description.trim(),
       amount: parseFloat(amount),
       type,
